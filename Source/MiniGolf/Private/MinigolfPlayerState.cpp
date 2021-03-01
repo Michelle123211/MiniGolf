@@ -9,6 +9,9 @@ AMinigolfPlayerState::AMinigolfPlayerState() {
 	CoinValue = 10;
 	MaxNumberOfCoins = 99999;
 
+	StrengthUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
+	StrengthUpgrade->SetParameters(2000, 500, 0, 3, 50);
+
 	LevelCostDelta = 50;
 
 	StrengthDelta = 500;
