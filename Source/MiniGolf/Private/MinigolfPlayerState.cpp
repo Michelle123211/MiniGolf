@@ -51,7 +51,7 @@ void AMinigolfPlayerState::IncrementCoins(int32 inc)
 // Probably would be better to create common class for all upgrades and then several instances with various parameters...
 
 int32 AMinigolfPlayerState::GetPriceOfStrength() {
-
+	return 0;
 }
 
 void AMinigolfPlayerState::UpgradeStrength()
@@ -63,7 +63,7 @@ void AMinigolfPlayerState::UpgradeStrength()
 }
 
 int32 AMinigolfPlayerState::GetPriceOfMagnet() {
-
+	return 0;
 }
 
 void AMinigolfPlayerState::UpgradeMagnet()
@@ -75,7 +75,7 @@ void AMinigolfPlayerState::UpgradeMagnet()
 }
 
 int32 AMinigolfPlayerState::GetPriceOfLaser() {
-
+	return 0;
 }
 
 void AMinigolfPlayerState::UpgradeLaser()
