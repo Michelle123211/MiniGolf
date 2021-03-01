@@ -14,11 +14,18 @@ UCLASS()
 class MINIGOLF_API AMinigolfPlayerState : public APlayerState
 {
 	GENERATED_BODY()
-
 	int32 MaxNumberOfCoins;
-	float VelocityDelta;
+
+	float StrengthDelta;
 	float MagnetDelta;
 	float LaserDelta;
+
+	int32 LevelOfStrength;
+	int32 MaxLevelOfStrength;
+	int32 LevelOfMagnet;
+	int32 MaxLevelOfMagnet;
+	int32 LevelOfLaser;
+	int32 MaxLevelOfLaser;
 
 public:
 
@@ -28,7 +35,10 @@ public:
 	int32 NumberOfCoins;
 
 	UPROPERTY(BlueprintReadOnly)
-	float MaxVelocity;
+	int32 CoinValue;
+
+	UPROPERTY(BlueprintReadOnly)
+	float MaxStrength;
 
 	UPROPERTY(BlueprintReadOnly)
 	float MagnetRange;
@@ -44,7 +54,7 @@ public:
 	void IncrementCoins(int32 inc);
 
 	UFUNCTION(BlueprintCallable, Category = "Upgrades")
-	void UpgradeVelocity();
+	void UpgradeStrength();
 
 	UFUNCTION(BlueprintCallable, Category = "Upgrades")
 	void UpgradeMagnet();

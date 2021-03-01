@@ -6,16 +6,24 @@
 
 AMinigolfPlayerState::AMinigolfPlayerState() {
 
+	CoinValue = 10;
 	MaxNumberOfCoins = 99999;
 
-	VelocityDelta = 500;
+	StrengthDelta = 500;
 	MagnetDelta = 50;
 	LaserDelta = 50;
 
+	LevelOfStrength = 0;
+	MaxLevelOfStrength = 3;
+	LevelOfMagnet = 0;
+	MaxLevelOfMagnet = 3;
+	LevelOfLaser = 0;
+	MaxLevelOfLaser = 3;
+
 	NumberOfCoins = 0;
-	MaxVelocity = 2500;
-	MagnetRange = 0;
-	LaserRange = 0;
+	MaxStrength = 2500 + LevelOfStrength * StrengthDelta;
+	MagnetRange = 0 + LevelOfMagnet * MagnetDelta;
+	LaserRange = 0 + LevelOfLaser * LaserDelta;
 }
 
 void AMinigolfPlayerState::BeginPlay()
@@ -31,24 +39,34 @@ void AMinigolfPlayerState::BeginPlay()
 
 void AMinigolfPlayerState::IncrementCoins(int32 inc)
 {
-	NumberOfCoins = NumberOfCoins + inc;
+	NumberOfCoins = NumberOfCoins + inc * CoinValue;
 
 	// do not let more than a specific number of coins (it is enough and it won't overflow the screen)
 	if (NumberOfCoins > MaxNumberOfCoins)
 		NumberOfCoins = MaxNumberOfCoins;
 }
 
-void AMinigolfPlayerState::UpgradeVelocity()
+// Probably would be better to create common class for all upgrades and then several instances with various parameters...
+void AMinigolfPlayerState::UpgradeStrength()
 {
-	MaxVelocity = MaxVelocity + VelocityDelta;
+	if (LevelOfStrength < MaxLevelOfStrength) {
+		MaxStrength = MaxStrength + StrengthDelta;
+		++LevelOfStrength;
+	}
 }
 
 void AMinigolfPlayerState::UpgradeMagnet()
 {
-	MagnetRange = MagnetRange + MagnetDelta;
+	if (LevelOfMagnet < MaxLevelOfMagnet) {
+		MagnetRange = MagnetRange + MagnetDelta;
+		++LevelOfMagnet;
+	}
 }
 
 void AMinigolfPlayerState::UpgradeLaser()
 {
-	LaserRange = LaserRange + LaserDelta;
+	if (LevelOfLaser < MaxLevelOfLaser) {
+		LaserRange = LaserRange + LaserDelta;
+		++LevelOfLaser;
+	}
 }
