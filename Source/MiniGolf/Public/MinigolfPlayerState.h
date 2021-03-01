@@ -16,12 +16,12 @@ class MINIGOLF_API AMinigolfPlayerState : public APlayerState
 	GENERATED_BODY()
 	int32 MaxNumberOfCoins;
 
+	int32 LevelCostDelta;
+
 	float StrengthDelta;
 	float MagnetDelta;
 	float LaserDelta;
 
-	int32 LevelOfStrength;
-	int32 MaxLevelOfStrength;
 	int32 LevelOfMagnet;
 	int32 MaxLevelOfMagnet;
 	int32 LevelOfLaser;
@@ -39,6 +39,10 @@ public:
 
 	UPROPERTY(BlueprintReadOnly)
 	float MaxStrength;
+	UPROPERTY(BlueprintReadOnly)
+	int32 LevelOfStrength;
+	UPROPERTY(BlueprintReadOnly)
+	int32 MaxLevelOfStrength;
 
 	UPROPERTY(BlueprintReadOnly)
 	float MagnetRange;
@@ -54,10 +58,19 @@ public:
 	void IncrementCoins(int32 inc);
 
 	UFUNCTION(BlueprintCallable, Category = "Upgrades")
+	int32 GetPriceOfStrength();
+
+	UFUNCTION(BlueprintCallable, Category = "Upgrades")
 	void UpgradeStrength();
 
 	UFUNCTION(BlueprintCallable, Category = "Upgrades")
+	int32 GetPriceOfMagnet();
+
+	UFUNCTION(BlueprintCallable, Category = "Upgrades")
 	void UpgradeMagnet();
+
+	UFUNCTION(BlueprintCallable, Category = "Upgrades")
+	int32 GetPriceOfLaser();
 
 	UFUNCTION(BlueprintCallable, Category = "Upgrades")
 	void UpgradeLaser();
