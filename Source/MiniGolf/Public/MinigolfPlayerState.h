@@ -23,7 +23,7 @@ public:
 	AMinigolfPlayerState();
 
 	UPROPERTY(BlueprintReadOnly)
-		int32 NumberOfCoins;
+		int32 Money;
 
 	UPROPERTY(BlueprintReadOnly)
 		int32 CoinValue;
@@ -41,7 +41,13 @@ public:
 
 	virtual void BeginPlay() override;
 
-	UFUNCTION(BlueprintCallable, Category="Coins")
+	UFUNCTION(BlueprintCallable)
 		void IncrementCoins(int32 inc);
+
+	UFUNCTION(BlueprintCallable)
+		void DecrementCoins(int32 dec);
+
+	UFUNCTION(BlueprintCallable)
+		void Pay(int32 dec);
 	
 };

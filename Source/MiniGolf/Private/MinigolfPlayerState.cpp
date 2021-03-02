@@ -7,7 +7,7 @@
 AMinigolfPlayerState::AMinigolfPlayerState() {
 	MaxNumberOfCoins = 99999;
 	CoinValue = 10;
-	NumberOfCoins = 0;
+	Money = 0;
 
 	StrengthUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
 	StrengthUpgrade->SetParameters(2000, 500, 0, 3, 50);
@@ -32,9 +32,24 @@ void AMinigolfPlayerState::BeginPlay()
 
 void AMinigolfPlayerState::IncrementCoins(int32 inc)
 {
-	NumberOfCoins = NumberOfCoins + inc * CoinValue;
+	Money = Money + inc * CoinValue;
 
 	// do not let more than a specific number of coins (it is enough and it won't overflow the screen)
-	if (NumberOfCoins > MaxNumberOfCoins)
-		NumberOfCoins = MaxNumberOfCoins;
+	if (Money > MaxNumberOfCoins)
+		Money = MaxNumberOfCoins;
+}
+
+void AMinigolfPlayerState::DecrementCoins(int32 dec)
+{
+	Money = Money - dec * CoinValue;
+	// Change implementation to the following one:
+	//int32 newValue = NumberOfCoins - dec * CoinValue;
+	//if (newValue < 0) return;
+
+	//NumberOfCoins = newValue;
+}
+
+void AMinigolfPlayerState::Pay(int32 price)
+{
+	Money = Money - price;
 }
