@@ -5,30 +5,18 @@
 #include "MinigolfGameState.h"
 
 AMinigolfPlayerState::AMinigolfPlayerState() {
-
-	CoinValue = 10;
 	MaxNumberOfCoins = 99999;
+	CoinValue = 10;
+	NumberOfCoins = 0;
 
 	StrengthUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
 	StrengthUpgrade->SetParameters(2000, 500, 0, 3, 50);
 
-	LevelCostDelta = 50;
+	MagnetUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
+	MagnetUpgrade->SetParameters(0, 50, 0, 3, 50);
 
-	StrengthDelta = 500;
-	MagnetDelta = 50;
-	LaserDelta = 50;
-
-	LevelOfStrength = 0;
-	MaxLevelOfStrength = 3;
-	LevelOfMagnet = 0;
-	MaxLevelOfMagnet = 3;
-	LevelOfLaser = 0;
-	MaxLevelOfLaser = 3;
-
-	NumberOfCoins = 0;
-	MaxStrength = 2000 + LevelOfStrength * StrengthDelta;
-	MagnetRange = 0 + LevelOfMagnet * MagnetDelta;
-	LaserRange = 0 + LevelOfLaser * LaserDelta;
+	LaserUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
+	LaserUpgrade->SetParameters(0, 50, 0, 3, 50);
 }
 
 void AMinigolfPlayerState::BeginPlay()
@@ -49,42 +37,4 @@ void AMinigolfPlayerState::IncrementCoins(int32 inc)
 	// do not let more than a specific number of coins (it is enough and it won't overflow the screen)
 	if (NumberOfCoins > MaxNumberOfCoins)
 		NumberOfCoins = MaxNumberOfCoins;
-}
-
-// Probably would be better to create common class for all upgrades and then several instances with various parameters...
-
-int32 AMinigolfPlayerState::GetPriceOfStrength() {
-	return 0;
-}
-
-void AMinigolfPlayerState::UpgradeStrength()
-{
-	if (LevelOfStrength < MaxLevelOfStrength) {
-		MaxStrength = MaxStrength + StrengthDelta;
-		++LevelOfStrength;
-	}
-}
-
-int32 AMinigolfPlayerState::GetPriceOfMagnet() {
-	return 0;
-}
-
-void AMinigolfPlayerState::UpgradeMagnet()
-{
-	if (LevelOfMagnet < MaxLevelOfMagnet) {
-		MagnetRange = MagnetRange + MagnetDelta;
-		++LevelOfMagnet;
-	}
-}
-
-int32 AMinigolfPlayerState::GetPriceOfLaser() {
-	return 0;
-}
-
-void AMinigolfPlayerState::UpgradeLaser()
-{
-	if (LevelOfLaser < MaxLevelOfLaser) {
-		LaserRange = LaserRange + LaserDelta;
-		++LevelOfLaser;
-	}
 }
