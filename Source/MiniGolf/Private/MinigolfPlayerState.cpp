@@ -16,7 +16,7 @@ AMinigolfPlayerState::AMinigolfPlayerState() {
 	MagnetUpgrade->SetParameters(0, 50, 0, 3, 50);
 
 	LaserUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
-	LaserUpgrade->SetParameters(0, 50, 0, 3, 50);
+	LaserUpgrade->SetParameters(0, 1000, 0, 3, 50);
 }
 
 void AMinigolfPlayerState::BeginPlay()
@@ -41,15 +41,16 @@ void AMinigolfPlayerState::IncrementCoins(int32 inc)
 
 void AMinigolfPlayerState::DecrementCoins(int32 dec)
 {
-	Money = Money - dec * CoinValue;
-	// Change implementation to the following one:
-	//int32 newValue = NumberOfCoins - dec * CoinValue;
-	//if (newValue < 0) return;
+	int32 newValue = Money - dec * CoinValue;
+	if (newValue < 0) return;
 
-	//NumberOfCoins = newValue;
+	Money = newValue;
 }
 
 void AMinigolfPlayerState::Pay(int32 price)
 {
-	Money = Money - price;
+	int32 newValue = Money - price;
+	if (newValue < 0) return;
+
+	Money = newValue;
 }
