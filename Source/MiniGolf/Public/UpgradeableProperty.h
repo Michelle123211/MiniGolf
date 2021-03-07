@@ -14,6 +14,7 @@ class MINIGOLF_API UUpgradeableProperty : public UObject
 {
 	GENERATED_BODY()
 
+	float FirstDelta;
 	float ValueDelta;
 	int32 LevelCostDelta;
 
@@ -21,7 +22,7 @@ public:
 
 	UUpgradeableProperty();
 
-	void SetParameters(float value, float valueDelta, int32 level, int32 maxLevel, int32 costDelta);
+	void SetParameters(float zeroValue, float firstDelta, float valueDelta, int32 level, int32 maxLevel, int32 costDelta);
 
 	UPROPERTY(BlueprintReadOnly)
 		float Value;

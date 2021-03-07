@@ -11,9 +11,10 @@ UUpgradeableProperty::UUpgradeableProperty() {
 	LevelCostDelta = 50;
 }
 
-void UUpgradeableProperty::SetParameters(float value, float valueDelta, int32 level, int32 maxLevel, int32 costDelta)
+void UUpgradeableProperty::SetParameters(float zeroValue, float firstDelta, float valueDelta, int32 level, int32 maxLevel, int32 costDelta)
 {
-	Value = value;
+	Value = zeroValue;
+	FirstDelta = firstDelta;
 	ValueDelta = valueDelta;
 	CurrentLevel = level;
 	MaxLevel = maxLevel;
@@ -27,7 +28,8 @@ int32 UUpgradeableProperty::GetPrice() {
 void UUpgradeableProperty::Upgrade()
 {
 	if (CurrentLevel < MaxLevel) {
-		Value = Value + ValueDelta;
+		if (CurrentLevel == 0 && FirstDelta != 0) Value = Value + FirstDelta;
+		else Value = Value + ValueDelta;
 		++CurrentLevel;
 	}
 }

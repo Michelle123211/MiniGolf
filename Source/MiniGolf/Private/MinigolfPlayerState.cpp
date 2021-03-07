@@ -10,13 +10,13 @@ AMinigolfPlayerState::AMinigolfPlayerState() {
 	Money = 0;
 
 	StrengthUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
-	StrengthUpgrade->SetParameters(2000, 500, 0, 3, 50);
+	StrengthUpgrade->SetParameters(2000, 0, 500, 0, 3, 50); // 0th level is 2000, then +500 with each
 
 	MagnetUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
-	MagnetUpgrade->SetParameters(0, 50, 0, 3, 50);
+	MagnetUpgrade->SetParameters(0, 240, 120, 0, 3, 50); // 0th level is 0, 1st is 240, then +120 with each
 
 	LaserUpgrade = NewObject<UUpgradeableProperty>(UUpgradeableProperty::StaticClass());
-	LaserUpgrade->SetParameters(0, 1000, 0, 3, 50);
+	LaserUpgrade->SetParameters(0, 0, 1000, 0, 3, 50); // 0th level is 0, then +1000 with each
 }
 
 void AMinigolfPlayerState::BeginPlay()
