@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType)
 class MINIGOLF_API UUpgradeableProperty : public UObject
 {
 	GENERATED_BODY()
