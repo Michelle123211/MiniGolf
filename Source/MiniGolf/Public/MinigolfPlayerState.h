@@ -22,6 +22,19 @@ public:
 
 	AMinigolfPlayerState();
 
+	UPROPERTY(BlueprintReadWrite)
+		int32 CurrentLevel;
+	UPROPERTY(BlueprintReadWrite)
+		int32 NumOfLevels;
+	UPROPERTY(BlueprintReadWrite)
+		FVector Start;
+	UPROPERTY(BlueprintReadWrite)
+		FRotator StartRotation;
+	UPROPERTY(BlueprintReadWrite)
+		FVector Finish;
+	UPROPERTY(BlueprintReadWrite)
+		int32 CurrentPar;
+
 	UPROPERTY(BlueprintReadOnly)
 		int32 Money;
 

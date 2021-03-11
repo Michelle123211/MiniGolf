@@ -5,6 +5,15 @@
 #include "MinigolfGameState.h"
 
 AMinigolfPlayerState::AMinigolfPlayerState() {
+	CurrentLevel = 0;
+	NumOfLevels = 0, 0, 0;
+	Start = FVector(0, 0, 0);
+	StartRotation = FRotator(0, 0, 0);
+	Finish = FVector(0, 0, 0);
+	CurrentPar = 0;
+
+	CurrentLevel = 0;
+
 	MaxNumberOfCoins = 99999;
 	CoinValue = 10;
 	Money = 0;
