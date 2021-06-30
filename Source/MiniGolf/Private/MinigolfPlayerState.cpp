@@ -43,7 +43,7 @@ void AMinigolfPlayerState::IncrementCoins(int32 inc)
 {
 	Money = Money + inc * CoinValue;
 
-	// do not let more than a specific number of coins (it is enough and it won't overflow the screen)
+	// do not allow more than a specific number of coins (it is enough and it won't overflow the screen)
 	if (Money > MaxNumberOfCoins)
 		Money = MaxNumberOfCoins;
 }
