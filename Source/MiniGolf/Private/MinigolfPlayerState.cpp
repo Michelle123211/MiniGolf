@@ -12,8 +12,6 @@ AMinigolfPlayerState::AMinigolfPlayerState() {
 	Finish = FVector(0, 0, 0);
 	CurrentPar = 0;
 
-	CurrentLevel = 0;
-
 	MaxNumberOfCoins = 99999;
 	CoinValue = 10;
 	Money = 0;
